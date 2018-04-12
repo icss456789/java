@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		用户名
+		<input type="text" id="username" />
+		密码
+		<input type="password"id="userpwd" />
+		
+		<input type="button"value="get请求1"id="btn1" />
+		
+		
+		<script src="js/jquery.js"></script>
+		
+		<script>
+			$(function(){
+				
+				$('#btn1').click(function(){
+					
+					//请求参数
+					var params = {
+						username:$('#username').val(),
+					}
+					
+					//参数列表：请求url，请求参数。，请求响应结束的回调函数
+					$.post('RequestFormServlet',{username:'tom',userpwd:'123456'},function(data,status,xhr){
+						
+						alert('请求成功，' + data);//响应的数据
+						console.log(status);//响应的状态 
+						console.log(xhr);//ajax和新对象
+						
+					},'html');
+				});
+				
+				
+				
+				
+			});
+			
+			
+		</script>
+	</body>
+</html>

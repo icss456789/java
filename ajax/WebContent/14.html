@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<input type="button"value="请求1"id="btn1" />
+		<input type="button"value="请求2"id="btn2" />
+		
+		<script src="js/jquery.js"></script>
+		
+		<script>
+			$(function(){
+				//ajax全局回调函数，当前网页的任何一个ajax请求都会触发这些回调函数
+				
+				//第一个ajax请求开始
+				$(document).ajaxStart(function(){
+					
+					console.log('ajaxStart...');
+					
+				});
+				//最后一个ajax请求结束
+				$(document).ajaxStop(function(){
+					
+					console.log('ajaxStop...');
+					
+				});
+				//每一个ajax请求开始
+				$(document).ajaxSend(function(){
+					
+					console.log('ajaxSend...');
+					
+				});
+				
+				$('#btn1').click(function(){
+					
+					$.get('Request1Servlet',function(data){
+						
+						alert(data);
+						
+					});
+					//每个ajax请求成功
+					$(document).ajaxSuccess(function(){
+					
+					console.log('ajaxSuccess...');
+					
+				});	
+				//任何ajax请求失败
+				$(document).ajaxErrorfunction(){
+					
+					console.log('ajaxError...');
+					
+				});
+					//不管成功失败都回调
+					$(document).ajaxComplete(function(){
+					
+					console.log('ajaxComplete...');
+					
+				});
+					
+				});
+				
+				$('#btn2').click(function(){
+					
+					$.get('Request2Servlet',function(data){
+						
+						alert(data);
+						
+					});
+						
+					
+					
+				});
+				
+				
+			});
+			
+			
+		</script>
+	</body>
+</html>
